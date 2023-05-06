@@ -8,6 +8,7 @@ import {errorMiddleware } from "./middlewares/error.js";
 import { mongoDB } from "./data/database.js";
 import session from "express-session";
 import {default as connectMongo}from 'connect-mongodb-session';
+import path  from "path";
 const MongoStore = connectMongo(session);
 
 
@@ -17,6 +18,8 @@ config({
     path: "./data/config.env"
 });
 const router = express.Router();
+app.set("view engine","ejs");
+app.use(express.static(path.join(path.resolve(),"public")))
 
 //Session Config
 let store=new MongoStore({
@@ -33,7 +36,7 @@ app.use(session({
 }))
 
 app.get("/",(req,res)=>{
-    res.send("hello world")
+    res.render("test")
 })
 //Using Middleware
 app.use(express.json());
