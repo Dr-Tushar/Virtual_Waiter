@@ -29,14 +29,13 @@ const itemSchema = new mongoose.Schema({
     },
     foodType:{
         type:String,
-        required:true,
+        default:"veg",
     },
     rating:{
-        type:String,
-        default:"4.5",
-        required:true,
+        type:Number,
+        default:4.5,
     },
-    adminId:{ type:mongoose.Schema.Types.ObjectId, ref:"User", required:true}
+    adminId:{ type:mongoose.Schema.Types.ObjectId, ref:"User", }
 },
 {timestamps:true}
 )

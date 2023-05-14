@@ -13,9 +13,9 @@ const router = express.Router()
 // })
 const storage = multer.memoryStorage();
 
-const upload = multer({storage}).single("file")
+export const upload = multer({storage}).single("file")
 
-router.post("/new", isAuthenticated,upload, newItem);
+router.post("/new", isAuthenticated,upload, newItem,);
 router.get("/my", isAuthenticated, getMyItem);
 router.route("/:id")
 .put(isAuthenticated,updateItem)

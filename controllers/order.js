@@ -20,8 +20,10 @@ export const newOrder = async(req,res,next)=>{
     }
 }
 export const getMyOrder= async(req,res,error)=>{
+    
     try {
         const userid = req.user._id
+       
     const Orders = await Order.find({user:userid});
     res.json({
         success:true,

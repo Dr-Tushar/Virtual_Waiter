@@ -22,7 +22,7 @@ export const newItem = async(req,res,next)=>{
     })
     res.json({
         success:true,
-        message:"New Item created Successfully!!"
+        message:"Item Added Successfully"
     })
     } 
     catch (error) {
