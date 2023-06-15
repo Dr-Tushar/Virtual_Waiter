@@ -64,64 +64,36 @@
     </div>
 
     <div>
-      <div class="cart-heading">Orders</div>
-       <% for(let item of object.values(session.cart.items)) {%>
+       <div class="cart-heading">Orders</div> 
+      
+      <% for(let cartItem of Object.values(cartItems.items)) {%>
         <div class="food"> 
           <div class="img-dtl">
-        <img src="<%= item.item.image %>" data-bs-toggle="modal" data-bs-target="#modal-container">
+        <img src="<%=cartItem.item.image.url%>" data-bs-toggle="modal" data-bs-target="#modal-container">
         <div class="descript"> 
-          <h><%=item.item.name %></h>
-          <p><%= item.item.price %></p>
+          <h><%=cartItem.item.name%></h>
+          <p><%=cartItem.item.price%></p>
         </div>	
       </div>
       <div class="quantity">
       
           <i class="fa fa-star fa-xs">
-          <span id="rate">4.4</span></i>
+          <span id="rate"><%=cartItem.item.rating%></span></i>
   
-        <div class=" quant">	
+        <div class="quant">	
         
         <button id="decrement">-</button>
         
               <div class="inp">
-          <input type="number" id="count-input" name="count-input" value="0">
+          <input type="tel" id="count-input" name="count-input" value="0">
         </div>
   
         <button id="increment">+</button>
         
       </div>
     </div>
-  </div>
-        <%}%>
-
-    
-
-        <!-- <div class="food"> 
-          <div class="img-dtl">
-        <img src="https://res.cloudinary.com/dwaxnnk8t/image/upload/v1683622738/nwm9hepiadypobsjjlrk.avif" data-bs-toggle="modal" data-bs-target="#modal-container">
-        <div class="descript"> 
-          <h>"Chicken Curry"</h>
-          <p>250</p>
-        </div>	
-      </div>
-      <div class="quantity">
-      
-          <i class="fa fa-star fa-xs">
-          <span id="rate">4.4</span></i>
-  
-        <div class=" quant">	
-        
-        <button id="decrement">-</button>
-        
-              <div class="inp">
-          <input type="number" id="count-input" name="count-input" value="0">
         </div>
-  
-        <button id="increment">+</button>
-        
-      </div>
-    </div>
-  </div> -->
+      <%}%>
 
   </div>
 
@@ -131,6 +103,7 @@
      
   <div class="quantity2 quant">
 		
+    
     
       <button id="decrement">-</button>
 
@@ -146,22 +119,11 @@
 
     <div class="total">
       <div class="subtotal">Subtotal<br>
-      <span class="price">Rs 420</span></div>
+      <span class="price"><%=cartItems.totalPrice%></span></div>
       <div class="button">
-        <div id="btn" >Confirm</div></div>
+        <a href="/status"><div id="btn" >Confirm</div></div></a>
       </div>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
     </div>
-  </div>
     
     
     

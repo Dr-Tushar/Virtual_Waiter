@@ -59,7 +59,7 @@ export const updateItem=async(req, res, next)=>{
             var updateFunc={name, description, price, category, foodType, rating}
         }
         
-        await Items.updateMany({_id:item._id},updateFunc)
+        await Items.updateOne({_id:item._id},updateFunc,{new: true})
 
         res.status(200).json({
             success:true,

@@ -41,18 +41,19 @@
 			</div>
 		  </nav>
     <a href="/cart" class="shopping-button">
-        <div class="bag-val">2</div>
+        <div class="bag-val">
+			<span id="cartCunter">0</span>
+		</div>
         <img src="https://res.cloudinary.com/dwaxnnk8t/image/upload/v1683467890/cart-icons_maw3zl.png" class="cart-icon" alt="">
     </a></div>
 
 
 
-    <div class="menu">Menu</div>	
+    <h1 class="menu">Menu</h1>	
 	<button class="search"><input type="text" class="food-search" placeholder="Search food here"><i class="fas fa-search"></i></button>
 	
-</div>  
 	
-
+	
 
 
 
@@ -79,11 +80,8 @@
 			<a href="#starter"><img width="94" height="94" src="https://res.cloudinary.com/deawpg6o7/image/upload/v1683980676/6153658_vmiavu.png" alt="sushi"/></a>
 			<h>Starters</h>
 		</div>
-
-        
-			
-
 	</div>
+</div>  
 
 
 	<!------------- Category 1: Burger----------------- -->
@@ -102,20 +100,16 @@
 		<div class="quantity">
 		
 				<i class="fa fa-star fa-xs">
-				<span id="rate">4.4</span></i>
+				<span id="rate"><%=item.rating%></span></i>
 
 			<div class=" quant">	
 			
 			<button id="decrement">-</button>
 			
             <div class="inp">
-				<input type="number" id="count-input" name="count-input" value="0">
+				<input  class="num" type="tel" id="count-input" name="count-input" value="0">
 			</div>
-
-			<button class="add-To-Cart" id="increment" data-itemdata="<%=JSON.stringify(item)%>" >+</button>
-			<button>Add</button>
-			
-			
+			<button class="add-to-cart" data-orders="<%=JSON.stringify(item) %>" id="increment" >+</button>
 		</div>
 	</div>
 </div>
@@ -133,17 +127,17 @@
 		<div class="quantity">
 		
 				<i class="fa fa-star fa-xs">
-				<span id="rate">4.4</span></i>
+				<span id="rate"><%=item.rating%></span></i>
 
 			<div class=" quant">	
 			
 			<button id="decrement">-</button>
 			
             <div class="inp">
-				<input type="number" id="count-input" name="count-input" value="0">
+				<input type="tel" id="count-input" name="count-input" value="0">
 			</div>
 
-			<button class="add-To-Cart" id="increment" data-itemdata="<%=JSON.stringify(item)%>" >+</button>
+			<button class="add-to-cart" data-pizza="<%=JSON.stringify(item)%>"  id="increment">+</button>
 			
 			
 		</div>
@@ -163,17 +157,17 @@
 		<div class="quantity">
 		
 				<i class="fa fa-star fa-xs">
-				<span id="rate">4.4</span></i>
+				<span id="rate"><%=item.rating%></span></i>
 
 			<div class=" quant">	
 			
 			<button id="decrement">-</button>
 			
             <div class="inp">
-				<input type="number" id="count-input" name="count-input" value="0">
+				<input type="tel" id="count-input" name="count-input" value="0">
 			</div>
 
-			<button class="add-To-Cart" id="increment" data-itemdata="<%=JSON.stringify(item)%>" >+</button>
+			<button id="increment" >+</button>
 			
 			
 		</div>
@@ -195,17 +189,17 @@
 		<div class="quantity">
 		
 				<i class="fa fa-star fa-xs">
-				<span id="rate">4.4</span></i>
+				<span id="rate"><%=item.rating%></span></i>
 
 			<div class=" quant">	
 			
 			<button id="decrement">-</button>
 			
             <div class="inp">
-				<input type="number" id="count-input" name="count-input" value="0">
+				<input type="tel" id="count-input" name="count-input" value="0">
 			</div>
 
-			<button class="add-To-Cart" id="increment" data-itemdata="<%=JSON.stringify(item)%>" >+</button>
+			<button id="increment"  >+</button>
 			
 			
 		</div>
@@ -225,17 +219,17 @@
 		<div class="quantity">
 		
 				<i class="fa fa-star fa-xs">
-				<span id="rate">4.4</span></i>
+				<span id="rate"><%=item.rating%></span></i>
 
 			<div class=" quant">	
 			
 			<button id="decrement">-</button>
 			
             <div class="inp">
-				<input type="number" id="count-input" name="count-input" value="0">
+				<input type="tel" id="count-input" name="count-input" value="0">
 			</div>
 
-			<button class="add-To-Cart" id="increment" data-itemdata="<%=JSON.stringify(item)%>" >+</button>
+			<button id="increment">+</button>
 			
 			
 		</div>
@@ -292,7 +286,7 @@
 						<button id="decrement">-</button>
 		
 					<div class="inp">
-						<input type="number" id="count-input" name="count-input" value="0">
+						<input type="tel" id="count-input" name="count-input" value="0">
 					</div>
 		
 					<button id="increment">+</button>
@@ -372,47 +366,59 @@ if (foods.length > 0) {
 <!-- -------for buttons------------ -->
 
 <script>
-const incrementBtns = document.querySelectorAll('#increment');
-const decrementBtns = document.querySelectorAll('#decrement');
+// const incrementBtns = document.querySelectorAll('#increment');
+// const decrementBtns = document.querySelectorAll('#decrement');
+// num=document.querySelector('.num')
 
-incrementBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const inputField = btn.parentNode.querySelector('#count-input');
-    inputField.value = parseInt(inputField.value) + 1;
-  });
-});
+// incrementBtns.forEach(btn => {
+//   btn.addEventListener('click', () =>{
+// 	const inputactiveField = btn.parentNode.querySelector('#count-input');
+//     inputactiveField.value = parseInt(inputField.value) + 1;
+//   });
+// });
+// let a=0;
+// incrementBtns.addEventListener("click",()=>{
+// 	a++;
+// 	a=(a<10) ? "0" +  a : a;
+// 	num.innerText=a;
+// 	console.log(a)
+// })
 
-decrementBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const inputField = btn.parentNode.querySelector('#count-input');
-    if (inputField.value > 0) {
-      inputField.value = parseInt(inputField.value) - 1;
-    }
-  });
-});
+// decrementBtns.forEach(btn => {
+//   btn.addEventListener('click', () => {
+//     const inputField = btn.parentNode.querySelector('#count-input');
+//     if (inputField.value > 0) {
+//       inputField.value = parseInt(inputField.value) - 1;
+//     }
+//   });
+// });
 
 // add to cart
-import axios from 'axios'
-let addToCart=document.querySelectorAll('.add-To-Cart')
+let addToCart=document.querySelectorAll('.add-to-cart')
+let cartCounter=document.querySelector('#cartCunter')  
 
-//   function updateCart(pizza){
-// 	axios.post('/update-cart',pizza).then(res=>{
-// 		console.log(res)
-// 	})
-//   }
+
+function updateCart(orders){
+	axios.post('/update-cart',orders).then(res=>{
+		console.log(res.data)
+		cartCounter.innerText=res.data.totalQty
+	})	
+}
+
 
 addToCart.forEach((btn)=>{
-    btn.addEventListener('click',(e)=>{
-        let pizza=btn.dataset.itemdata
-        // updateCart(pizza)
-		console.log(pizza)
+	btn.addEventListener('click',(e)=>{
+		// console.log(e)
+		let orders=JSON.parse(btn.dataset.orders)
+		updateCart(orders)
+		// console.log(orders)
+	})
+})  
 
-    })
-})
 
 </script>
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
